@@ -33,7 +33,7 @@ function FormularioLogin() {
     return (
         <div className="form-login">
            <form action="" onSubmit={getSubmit}>
-                <h2>Login de usuario</h2>
+                <h2 className="form-title">Login de usuario</h2>
                 <label htmlFor="email">Correo electrónico: </label>
                     <input onChange={getEmail} type="email" id="email" name="email" placeholder="Escriba su correo electrónico" value={nuevoEmail} required/><br/><br/>
                 <label htmlFor="password">Contraseña: </label>

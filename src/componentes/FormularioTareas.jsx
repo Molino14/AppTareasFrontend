@@ -27,7 +27,7 @@ function FormularioTareas(props) {
     return (
         <div>
             <form action="" onSubmit={getSubmit}>
-                <h2>Crear tarea</h2>
+                <h2 className="form-title">Crear tarea</h2>
                 <label htmlFor="descripcion">Descripción de la tarea: </label>
                 <textarea onChange={getDescripcion} id="descripcion" name="descripcion" rows="4" cols="20" placeholder="Escriba una o varias tareas..." value={nuevaDescripcion}></textarea><br/><br/>
                 {error ? (<h4 className="error-campos">Debe escribir alguna tarea</h4>) : null}

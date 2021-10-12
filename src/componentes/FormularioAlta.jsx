@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import { Redirect } from 'react-router';
+const Swal = require('sweetalert2');
 
 function FormularioAlta(props) {
     const nuevoUsuario = props.onCrearUsuario;
@@ -45,7 +47,7 @@ function FormularioAlta(props) {
     return (
         <div className="form-user">
             <form action="" onSubmit={getSubmit}>
-                <h2>Crear usuario</h2>
+                <h2 className="form-title">Crear usuario</h2>
                 <label htmlFor="nombre">Nombre: </label>
                     <input onChange={getNombre} type="text" id="nombre" name="nombre" placeholder="Escriba su nombre" value={nuevoNombre} required /><br/><br/>
                 <label htmlFor="apellidos">Apellidos: </label>
