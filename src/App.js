@@ -19,6 +19,7 @@ function App() {
 	const [tareas, setTareas] = useState([]);
 	const url1 = "http://localhost:5000/api/usuarios"
 	const url2 = "http://localhost:5000/api/tareas"
+	const url3 = "http://localhost:5000/api/usuarios/login"
   
   	//Consulta de tareas a la BDD.
 	async function getTareas() {
@@ -120,23 +121,132 @@ function App() {
 		});
 		getTareas();
 	}
+	async function loginUsuario(usuario) {
+		// Envia los datos al servidor.
+		await fetch(url3, {
+		method: 'POST', 
+		body: JSON.stringify(usuario),
+		headers:{
+			'Content-Type': 'application/json'
+		}
+		})
+		.then(res => res.json())
+		.catch(error => {
+			// Alerta de fallo al iniciar sesión.
+			Swal.fire({
+				icon: "error",
+				title: `Fallo al iniciar sesión`,
+				text: "Inténtelo más tarde",
+				showConfirmButton: false,
+				timer: 2300
+			})
+			console.error('Error:', error)})
+		.then(response => {
+			if (!response) {
+				console.log('Success:', response)	
+			} else {
+				// Alerta de iniciar sesión
+				Swal.fire({
+					icon: "success",
+					title: `Bienvenid@ `,
+					showConfirmButton: false,
+					timer: 2000
+				})
+			}
+		});
+		getTareas();
+	}
+	// Modificar tarea
+	async function modificarTarea(tarea) {
+		// Envia los datos al servidor.
+		await fetch(url2, {
+		method: 'PATCH', 
+		body: JSON.stringify(tarea),
+		headers:{
+			'Content-Type': 'application/json'
+		}
+		})
+		.then(res => res.json())
+		.catch(error => {
+			// Alerta de fallo al modificar la tarea
+			Swal.fire({
+				icon: "error",
+				title: `Fallo al modificar la tarea`,
+				text: "Inténtelo más tarde",
+				showConfirmButton: false,
+				timer: 2300
+			})
+			console.error('Error:', error)})
+		.then(response => {
+			if (!response) {
+				console.log('Success:', response)	
+			} else {
+				// Alerta de tarea modificada
+				Swal.fire({
+					icon: "success",
+					title: `Tarea modificada correctamente`,
+					showConfirmButton: false,
+					timer: 2000
+				})
+			}
+		});
+		getTareas();
+	}
+	// Eliminar tarea
+	async function eliminarTarea(tarea) {
+		// Envia los datos al servidor.
+		await fetch(url2, {
+		method: 'DELETE', 
+		body: JSON.stringify(tarea),
+		headers:{
+			'Content-Type': 'application/json'
+		}
+		})
+		.then(res => res.json())
+		.catch(error => {
+			// Alerta de fallo al eliminar la tarea
+			Swal.fire({
+				icon: "error",
+				title: `Fallo al eliminar la tarea`,
+				text: "Inténtelo más tarde",
+				showConfirmButton: false,
+				timer: 2300
+			})
+			console.error('Error:', error)})
+		.then(response => {
+			if (!response) {
+				console.log('Success:', response)	
+			} else {
+				// Alerta de tarea modificada
+				Swal.fire({
+					icon: "success",
+					title: `Tarea eliminada correctamente`,
+					showConfirmButton: false,
+					timer: 2000
+				})
+			}
+		});
+		getTareas();
+	}	
   return (
     <div className="App">
 		<h1 className="titulo-app">AppTareas Odisea Informática</h1>
 		<Router>
 			<Nav />
+			<Switch>
 				<Route exact path='/'>
 					<FormularioTareas onCrearTarea={crearTarea}/><br/>
 					{tareas.length === 0 ? <h2 className="titulo-tareas">No hay tareas pendientes</h2> : <h2 className="titulo-tareas">Tareas pendientes</h2>}
-					<Tareas onTareas={tareas} onUsuarios={usuarios}/>
+					<Tareas onTareas={tareas} onUsuarios={usuarios} onModificarTarea={modificarTarea} onEliminarTarea={eliminarTarea}/>
 				</Route>
 				<Route path='/usuarios/alta'>
 					<FormularioAlta onCrearUsuario={crearUsuario}/>
 				</Route>
 				<Route path='/usuarios/login'>
-					<FormularioLogin />
+					<FormularioLogin onLoginUsuario={loginUsuario} />
 				</Route>
-				<Redirect to='/' />
+			</Switch>
+			<Redirect to='/' />
 		</Router>	
     </div>
   );

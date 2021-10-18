@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 
 function FormularioTareas(props) {
-    const nuevaTarea = props.onTareas;
+    const nuevaTarea = props.onCrearTarea;
     const [error, setError] = useState(false);
     const [nuevaDescripcion, setNuevaDescripcion] = useState("");
     

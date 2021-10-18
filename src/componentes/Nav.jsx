@@ -17,7 +17,7 @@ function Nav() {
 				</li>
                 <li className='nav-item'>
                     <Link className='nav-link' to='/usuarios/login'>
-                        Login
+                        Iniciar sesión
                     </Link>
 				</li>
             </ul>

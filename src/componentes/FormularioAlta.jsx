@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 const Swal = require('sweetalert2');
 
 function FormularioAlta(props) {

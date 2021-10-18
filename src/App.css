@@ -4,6 +4,9 @@
 body{
     background: #59abe3
 }
+h5{
+    margin: 0px;
+}
 .titulo-app{
     padding: 20px 0px 20px 0px;
     text-align: center; 
@@ -130,9 +133,11 @@ label{
 .titulo-tareas{
     margin: 10px 0;
     padding-bottom: 10px;
-    color: #78788c;
     border-bottom: 3px solid #78788c;
+    font-size: 28px;
     text-align: center;
+    color: #ff6464; 
+    text-shadow: -1px 0 #414D68, 0 1px #414D68, 1px 0 #414D68, 0 -1px #414D68, -2px 2px 0 #414D68, 2px 2px 0 #414D68, 1px 1px #414D68, 2px 2px #414D68, 3px 3px #414D68, 4px 4px #414D68, 5px 5px #414D68;
 }
 .tareas{
     display: flex;
@@ -144,4 +149,17 @@ label{
     box-shadow: 0 0 40px -10px #000;
     margin: 30px 20px 20px 20px;
     padding: 20px 30px;
+}
+.tarea-descripcion{
+    margin: 10px 10px 10px 0px;
+}
+.button-tarea-completada:hover {
+    background: rgba(255, 0, 0, 0.808);
+    border: 2px solid rgba(255, 0, 0, 0.808);
+    color: #fff;
+}
+.button-editar-tarea:hover {
+    background: #ECBA82;
+    border: 2px solid #ECBA82;
+    color: #fff;
 }

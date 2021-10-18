@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
-function FormularioLogin() {
-    // const nuevoUsuario = props.onCrearUsuario;
+function FormularioLogin(props) {
+    const loginUsuario = props.onLoginUsuario;
     const [error, setError] = useState(false);
     const [nuevoEmail, setNuevoEmail] = useState("");
     const [nuevoPassword, setNuevoPassword] = useState("");
@@ -25,7 +25,7 @@ function FormularioLogin() {
             email: nuevoEmail,
             password: nuevoPassword
         };
-        // nuevoUsuario(usuarioNuevo);
+        loginUsuario(nuevoLogin);
         // Resetea los valores de las celdas del formulario al enviar.
         setNuevoEmail("");
         setNuevoPassword("");
@@ -33,14 +33,14 @@ function FormularioLogin() {
     return (
         <div className="form-login">
            <form action="" onSubmit={getSubmit}>
-                <h2 className="form-title">Login de usuario</h2>
+                <h2 className="form-title">Iniciar sesión</h2>
                 <label htmlFor="email">Correo electrónico: </label>
                     <input onChange={getEmail} type="email" id="email" name="email" placeholder="Escriba su correo electrónico" value={nuevoEmail} required/><br/><br/>
                 <label htmlFor="password">Contraseña: </label>
                     <input onChange={getPassword} type="password" id="password" name="password" placeholder="Escriba una contraseña" value={nuevoPassword} required/><br/><br/>
                 {error ? (<h4 className="error-campos">Debe rellenar los campos</h4>) : null}
                 <div className="align-btn">
-                    <button type="submit" value="Logearse">Logearse</button>
+                    <button type="submit" value="Logearse">Iniciar sesión</button>
                 </div>
             </form> 
         </div>
