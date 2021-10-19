@@ -24,7 +24,7 @@ function App() {
   	//Consulta de tareas a la BDD.
 	async function getTareas() {
 		try {    
-			const consulta = await fetch(url2);
+			const consulta = await fetch(process.env.REACT_APP_BASE_URL + "/tareas");
 			const listaTareas = await consulta.json();
 			setTareas(listaTareas.tareas);
 			console.log(listaTareas.tareas);
@@ -37,7 +37,7 @@ function App() {
 	// Crear tarea
 	async function crearTarea(tarea) {
 		// Envia los datos al servidor.
-		await fetch(url2, {
+		await fetch(process.env.REACT_APP_BASE_URL + "/tareas", {
 		method: 'POST', 
 		body: JSON.stringify(tarea),
 		headers:{
@@ -75,7 +75,7 @@ function App() {
 	// Consulta de usuarios a la BDD.
 	async function getUsuarios() {
 		try {    
-			const consulta = await fetch(url1);
+			const consulta = await fetch(process.env.REACT_APP_BASE_URL + "/usuarios");
 			const listaUsuarios = await consulta.json();
 			setUsuarios(listaUsuarios.usuarios);
 			console.log(listaUsuarios.usuarios);
@@ -88,7 +88,7 @@ function App() {
 	// Crear usuario
 	async function crearUsuario(usuario) {
 		// Envia los datos al servidor.
-		await fetch(url1, {
+		await fetch(process.env.REACT_APP_BASE_URL + "/usuarios", {
 		method: 'POST', 
 		body: JSON.stringify(usuario),
 		headers:{
@@ -123,7 +123,7 @@ function App() {
 	}
 	async function loginUsuario(usuario) {
 		// Envia los datos al servidor.
-		await fetch(url3, {
+		await fetch(process.env.REACT_APP_BASE_URL + "/usuarios/login", {
 		method: 'POST', 
 		body: JSON.stringify(usuario),
 		headers:{
@@ -159,7 +159,7 @@ function App() {
 	// Modificar tarea
 	async function modificarTarea(tarea) {
 		// Envia los datos al servidor.
-		await fetch(url2, {
+		await fetch(process.env.REACT_APP_BASE_URL + "/tareas", {
 		method: 'PATCH', 
 		body: JSON.stringify(tarea),
 		headers:{
@@ -195,7 +195,7 @@ function App() {
 	// Eliminar tarea
 	async function eliminarTarea(tarea) {
 		// Envia los datos al servidor.
-		await fetch(url2, {
+		await fetch(process.env.REACT_APP_BASE_URL + "/tareas", {
 		method: 'DELETE', 
 		body: JSON.stringify(tarea),
 		headers:{
